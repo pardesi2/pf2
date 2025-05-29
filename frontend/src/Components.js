@@ -183,12 +183,12 @@ const BottomNavigation = ({ currentPage, setCurrentPage }) => {
 
   return (
     <nav className="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-xl border-t border-slate-200/50 max-w-md mx-auto shadow-2xl shadow-slate-900/10 z-50">
-      <div className="flex items-center justify-between px-2 py-2">
+      <div className="grid grid-cols-4 gap-1 px-3 py-2">
         {navItems.map(item => (
           <button
             key={item.id}
             onClick={() => setCurrentPage(item.id)}
-            className={`flex-1 flex flex-col items-center justify-center py-3 px-2 rounded-2xl transition-all duration-300 relative group ${
+            className={`flex flex-col items-center justify-center py-3 px-2 rounded-2xl transition-all duration-300 relative group ${
               currentPage === item.id 
                 ? 'text-blue-600 bg-blue-50/80' 
                 : 'text-slate-500 hover:text-slate-700 hover:bg-slate-50'
@@ -200,18 +200,16 @@ const BottomNavigation = ({ currentPage, setCurrentPage }) => {
             )}
             
             {/* Icon container with perfect centering */}
-            <div className={`flex items-center justify-center w-8 h-8 mb-1 transition-all duration-300 ${
+            <div className={`nav-icon-container mb-1 transition-all duration-300 ${
               currentPage === item.id 
                 ? 'scale-110 text-blue-600' 
                 : 'group-hover:scale-105'
             }`}>
-              <div className="flex items-center justify-center w-full h-full">
-                {item.icon}
-              </div>
+              {item.icon}
             </div>
             
             {/* Label with perfect centering */}
-            <div className={`text-xs font-medium transition-all duration-300 leading-none text-center min-h-[12px] flex items-center justify-center ${
+            <div className={`nav-label text-xs font-medium transition-all duration-300 ${
               currentPage === item.id 
                 ? 'text-blue-600 font-bold' 
                 : 'text-slate-500 group-hover:text-slate-700'

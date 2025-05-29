@@ -640,3 +640,15 @@ const OurOfferings = () => {
     </div>
   );
 };
+
+// Export all components
+export { 
+  Icons, 
+  Header, 
+  BottomNavigation, 
+  PhoneCard, 
+  CategoryGrid,
+  RecentListings,
+  FeaturedShops,
+  OurOfferings
+};

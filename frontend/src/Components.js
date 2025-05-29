@@ -172,7 +172,7 @@ const Header = ({ selectedCity, setSelectedCity, cities, onMessagesClick }) => {
   );
 };
 
-// Enhanced Bottom Navigation with premium styling
+// Enhanced Bottom Navigation with perfect alignment
 const BottomNavigation = ({ currentPage, setCurrentPage }) => {
   const navItems = [
     { id: 'home', icon: Icons.home, label: 'Home' },
@@ -182,32 +182,39 @@ const BottomNavigation = ({ currentPage, setCurrentPage }) => {
   ];
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-xl border-t border-slate-200/50 max-w-md mx-auto shadow-2xl shadow-slate-900/10">
-      <div className="flex">
+    <nav className="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-xl border-t border-slate-200/50 max-w-md mx-auto shadow-2xl shadow-slate-900/10 z-50">
+      <div className="flex items-center justify-between px-2 py-2">
         {navItems.map(item => (
           <button
             key={item.id}
             onClick={() => setCurrentPage(item.id)}
-            className={`flex-1 py-3 px-1 text-center transition-all duration-300 relative ${
+            className={`flex-1 flex flex-col items-center justify-center py-3 px-2 rounded-2xl transition-all duration-300 relative group ${
               currentPage === item.id 
-                ? 'text-blue-600' 
-                : 'text-slate-500 hover:text-slate-700'
+                ? 'text-blue-600 bg-blue-50/80' 
+                : 'text-slate-500 hover:text-slate-700 hover:bg-slate-50'
             }`}
           >
+            {/* Active indicator */}
             {currentPage === item.id && (
-              <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-12 h-1 bg-gradient-to-r from-cyan-400 to-blue-600 rounded-full"></div>
+              <div className="absolute top-1 left-1/2 transform -translate-x-1/2 w-8 h-1 bg-gradient-to-r from-cyan-400 to-blue-600 rounded-full shadow-lg"></div>
             )}
-            <div className={`mb-1 transition-all duration-300 ${
+            
+            {/* Icon container with perfect centering */}
+            <div className={`flex items-center justify-center w-8 h-8 mb-1 transition-all duration-300 ${
               currentPage === item.id 
                 ? 'scale-110 text-blue-600' 
-                : 'hover:scale-105'
+                : 'group-hover:scale-105'
             }`}>
-              {item.icon}
+              <div className="flex items-center justify-center w-full h-full">
+                {item.icon}
+              </div>
             </div>
-            <div className={`text-xs font-semibold transition-all duration-300 ${
+            
+            {/* Label with perfect centering */}
+            <div className={`text-xs font-medium transition-all duration-300 leading-none text-center min-h-[12px] flex items-center justify-center ${
               currentPage === item.id 
                 ? 'text-blue-600 font-bold' 
-                : ''
+                : 'text-slate-500 group-hover:text-slate-700'
             }`}>
               {item.label}
             </div>

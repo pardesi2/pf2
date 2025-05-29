@@ -364,3 +364,279 @@ const CategoryGrid = ({ onCategoryClick }) => {
     </div>
   );
 };
+
+// Enhanced Recent Listings Component
+const RecentListings = ({ phones, onPhoneClick }) => {
+  const recentPhones = [
+    {
+      id: 'r1',
+      title: 'iPhone 14 Plus',
+      brand: 'Apple',
+      price: 265000,
+      condition: 'Excellent',
+      storage: '128GB',
+      color: 'Purple',
+      location: 'Gulberg, Lahore',
+      images: ['https://images.unsplash.com/photo-1678685888221-cda773a3dcdb'],
+      posted: '15 min ago',
+      isNew: true
+    },
+    {
+      id: 'r2',
+      title: 'Samsung Galaxy A54',
+      brand: 'Samsung',
+      price: 89000,
+      condition: 'Like New',
+      storage: '256GB',
+      color: 'Awesome Lime',
+      location: 'Defence, Karachi',
+      images: ['https://images.unsplash.com/photo-1610792516307-7e22b020107e'],
+      posted: '28 min ago',
+      isNew: true
+    },
+    {
+      id: 'r3',
+      title: 'OnePlus 12',
+      brand: 'OnePlus',
+      price: 195000,
+      condition: 'New',
+      storage: '256GB',
+      color: 'Silky Black',
+      location: 'F-11, Islamabad',
+      images: ['https://images.unsplash.com/photo-1565849904461-04a58ad377e0'],
+      posted: '1 hour ago',
+      isNew: false
+    }
+  ];
+
+  return (
+    <div className="bg-gradient-to-br from-white to-slate-50 mx-4 rounded-3xl shadow-xl border border-slate-200/50 overflow-hidden backdrop-blur-sm">
+      <div className="p-6 pb-4 flex justify-between items-center bg-gradient-to-r from-transparent to-blue-50/30">
+        <div>
+          <div className="flex items-center gap-2 mb-2">
+            <div className="w-2 h-2 bg-gradient-to-r from-red-500 to-pink-500 rounded-full animate-pulse"></div>
+            <h3 className="text-xl font-bold text-slate-800">Recent Listings</h3>
+            <div className="text-red-500">{Icons.lightning}</div>
+          </div>
+          <p className="text-sm text-slate-600 font-medium">Fresh phones just posted</p>
+        </div>
+        <button className="text-sm text-blue-600 font-bold hover:text-blue-700 transition-colors px-3 py-2 rounded-xl hover:bg-blue-50">
+          View All
+        </button>
+      </div>
+      <div className="px-6 pb-6">
+        <div className="space-y-4">
+          {recentPhones.map(phone => (
+            <div 
+              key={phone.id}
+              onClick={() => onPhoneClick(phone)}
+              className="flex gap-4 p-4 rounded-2xl border border-slate-100 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50 hover:shadow-lg hover:border-blue-200 transition-all duration-300 cursor-pointer group"
+            >
+              <div className="relative">
+                <img src={phone.images[0]} alt={phone.title} className="w-20 h-20 rounded-2xl object-cover shadow-lg group-hover:shadow-xl transition-shadow duration-300" />
+                {phone.isNew && (
+                  <div className="absolute -top-2 -right-2 w-4 h-4 bg-gradient-to-r from-red-500 to-pink-500 rounded-full animate-pulse border-2 border-white shadow-lg"></div>
+                )}
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="flex items-start justify-between mb-2">
+                  <h4 className="font-bold text-sm text-slate-800 truncate group-hover:text-blue-700 transition-colors duration-300">
+                    {phone.title}
+                  </h4>
+                  {phone.isNew && (
+                    <span className="bg-gradient-to-r from-red-500 to-pink-500 text-white text-xs px-3 py-1 rounded-full font-bold flex-shrink-0 ml-2 shadow-lg animate-pulse">
+                      NEW
+                    </span>
+                  )}
+                </div>
+                <p className="text-lg font-bold bg-gradient-to-r from-slate-800 to-slate-600 bg-clip-text text-transparent mb-2">
+                  ₨ {phone.price.toLocaleString()}
+                </p>
+                <div className="flex items-center gap-3 text-xs text-slate-600">
+                  <span className="bg-gradient-to-r from-green-100 to-emerald-100 text-green-700 px-3 py-1 rounded-full font-semibold border border-green-200">
+                    {phone.condition}
+                  </span>
+                  <span className="font-medium">•</span>
+                  <span className="font-medium">{phone.posted}</span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// Enhanced Featured Shops Component
+const FeaturedShops = () => {
+  const shops = [
+    {
+      id: 's1',
+      name: 'TechHub Karachi',
+      rating: 4.9,
+      reviews: 324,
+      specializes: 'Premium iPhones',
+      location: 'Saddar, Karachi',
+      verified: true,
+      phones: 45,
+      avatar: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43',
+      gradient: 'from-blue-500 to-indigo-600'
+    },
+    {
+      id: 's2',
+      name: 'Mobile Palace',
+      rating: 4.8,
+      reviews: 218,
+      specializes: 'Samsung Galaxy',
+      location: 'Mall Road, Lahore',
+      verified: true,
+      phones: 67,
+      avatar: 'https://images.unsplash.com/photo-1556742393-d75f468bfcb0',
+      gradient: 'from-emerald-500 to-teal-600'
+    },
+    {
+      id: 's3',
+      name: 'Smart Devices',
+      rating: 4.7,
+      reviews: 156,
+      specializes: 'Budget Phones',
+      location: 'Blue Area, Islamabad',
+      verified: true,
+      phones: 89,
+      avatar: 'https://images.unsplash.com/photo-1560472355-536de3962603',
+      gradient: 'from-purple-500 to-pink-600'
+    }
+  ];
+
+  return (
+    <div className="bg-gradient-to-br from-white to-slate-50 mx-4 rounded-3xl shadow-xl border border-slate-200/50 overflow-hidden">
+      <div className="p-6 pb-4 flex justify-between items-center">
+        <div>
+          <div className="flex items-center gap-2 mb-2">
+            <div className="text-amber-500">{Icons.verified}</div>
+            <h3 className="text-xl font-bold text-slate-800">Featured Shops</h3>
+            <div className="text-blue-500">{Icons.shield}</div>
+          </div>
+          <p className="text-sm text-slate-600 font-medium">Trusted verified sellers</p>
+        </div>
+        <button className="text-sm text-blue-600 font-bold hover:text-blue-700 transition-colors px-3 py-2 rounded-xl hover:bg-blue-50">
+          View All
+        </button>
+      </div>
+      <div className="px-6 pb-6">
+        <div className="space-y-4">
+          {shops.map(shop => (
+            <div 
+              key={shop.id}
+              className="bg-gradient-to-r from-slate-50 via-white to-slate-50 p-5 rounded-2xl border-2 border-slate-200/50 hover:shadow-2xl hover:border-blue-200 transition-all duration-500 cursor-pointer group hover:scale-[1.02]"
+            >
+              <div className="flex items-center gap-4">
+                <div className={`w-16 h-16 bg-gradient-to-br ${shop.gradient} rounded-3xl flex items-center justify-center text-white font-bold text-xl shadow-xl shadow-blue-500/20 ring-2 ring-white group-hover:scale-110 transition-transform duration-300`}>
+                  {shop.name.charAt(0)}
+                </div>
+                <div className="flex-1">
+                  <div className="flex items-center gap-3 mb-2">
+                    <h4 className="font-bold text-slate-800 group-hover:text-blue-700 transition-colors duration-300">
+                      {shop.name}
+                    </h4>
+                    {shop.verified && (
+                      <div className="w-6 h-6 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center shadow-lg">
+                        <span className="text-white text-xs font-bold">✓</span>
+                      </div>
+                    )}
+                  </div>
+                  <div className="flex items-center gap-2 mb-3">
+                    <div className="text-amber-400">{Icons.star}</div>
+                    <span className="font-bold text-sm">{shop.rating}</span>
+                    <span className="text-xs text-slate-600 font-medium">({shop.reviews} reviews)</span>
+                  </div>
+                  <div className="flex items-center justify-between text-xs text-slate-600 font-medium">
+                    <span>Specializes in {shop.specializes}</span>
+                    <span className="bg-gradient-to-r from-blue-100 to-cyan-100 text-blue-700 px-3 py-1 rounded-full font-bold">
+                      {shop.phones} phones
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// Enhanced Our Offerings Component
+const OurOfferings = () => {
+  const offerings = [
+    {
+      icon: '🔒',
+      title: 'Secure Transactions',
+      description: 'All payments protected with escrow service',
+      color: 'from-green-500 to-emerald-600'
+    },
+    {
+      icon: '🚚',
+      title: 'Safe Delivery',
+      description: 'Nationwide delivery with insurance',
+      color: 'from-blue-500 to-cyan-600'
+    },
+    {
+      icon: '✅',
+      title: 'Phone Verification',
+      description: 'IMEI check & authenticity guarantee',
+      color: 'from-purple-500 to-violet-600'
+    },
+    {
+      icon: '💬',
+      title: '24/7 Support',
+      description: 'Round the clock customer assistance',
+      color: 'from-orange-500 to-red-600'
+    },
+    {
+      icon: '🔄',
+      title: 'Easy Returns',
+      description: '7-day return policy on all purchases',
+      color: 'from-teal-500 to-green-600'
+    },
+    {
+      icon: '📱',
+      title: 'PTA Verification',
+      description: 'Only PTA approved devices listed',
+      color: 'from-indigo-500 to-blue-600'
+    }
+  ];
+
+  return (
+    <div className="bg-gradient-to-br from-white to-slate-50 mx-4 rounded-3xl shadow-xl border border-slate-200/50 overflow-hidden">
+      <div className="p-6 pb-4">
+        <div className="flex items-center gap-2 mb-2">
+          <div className="text-blue-500">{Icons.diamond}</div>
+          <h3 className="text-xl font-bold text-slate-800">Our Offerings</h3>
+        </div>
+        <p className="text-sm text-slate-600 font-medium">Why choose PhoneFlip for your next phone</p>
+      </div>
+      <div className="px-6 pb-6">
+        <div className="grid grid-cols-2 gap-4">
+          {offerings.map((offering, index) => (
+            <div 
+              key={index}
+              className="bg-gradient-to-br from-white via-slate-50 to-slate-100 p-5 rounded-2xl border-2 border-slate-200/50 hover:shadow-xl hover:scale-105 transition-all duration-500 group hover:border-blue-200"
+            >
+              <div className={`w-14 h-14 bg-gradient-to-br ${offering.color} rounded-3xl flex items-center justify-center text-white text-2xl mb-4 shadow-xl group-hover:scale-110 transition-transform duration-300`}>
+                {offering.icon}
+              </div>
+              <h4 className="font-bold text-sm text-slate-800 mb-3 group-hover:text-blue-700 transition-colors duration-300">
+                {offering.title}
+              </h4>
+              <p className="text-xs text-slate-600 leading-relaxed font-medium">
+                {offering.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};

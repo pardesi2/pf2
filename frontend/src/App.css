@@ -278,6 +278,30 @@
   box-shadow: 0 2px 10px rgba(59, 130, 246, 0.4);
 }
 
+/* Navigation Icon Alignment Fix */
+.nav-icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  margin: 0 auto;
+}
+
+.nav-icon-container svg {
+  display: block;
+  margin: 0 auto;
+}
+
+.nav-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1;
+  min-height: 14px;
+}
+
 /* Enhanced Modal Styles */
 .modal-backdrop {
   @apply fixed inset-0 bg-black/60;
